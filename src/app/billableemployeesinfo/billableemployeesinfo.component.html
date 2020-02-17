@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="https://ThanushreeCU.github.io/TY_TechElevate_TrainingMaintenance_Thanushree/ty-styles-table.css">
+    <link rel="stylesheet" type="text/css" href="https://ThanushreeCU.github.io/TY_TechElevate_TrainingMaintenance_Thanushree/ty-styles-form.css">
+</head>
+
+<body>
+    <div class="container col-md-10 offset-1">
+        <div class="mt-4">
+            <h3 class="ty-heading">Billable Employees Info</h3>
+            <table class="table table-hover table-bordered">
+                <thead class="text-white ty-header">
+                    <tr>
+                        <td>Client Name</td>
+                        <td>Employee Name</td>
+                        <td>Date Of Deployment</td>
+                        <td>Contract End Date </td>
+                        <td>Ratecard</td>
+                        <td>Stack</td>
+                        <td>Year Of Experience</td>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr *ngFor="let billableEmployeesDetails of billableEmployeesDetails" (click)='particularRow(billableEmployeesDetails)' data-toggle="modal" data-target=".bd-example-modal-xl">
+                        <td>{{billableEmployeesDetails.clientName}}</td>
+                        <td>{{billableEmployeesDetails.EmpName}}</td>
+                        <td>{{billableEmployeesDetails.dateOfDeployment | date: 'dd/MM/yyyy'}}</td>
+                        <td>{{billableEmployeesDetails.contractEndDate | date: 'dd/MM/yyyy'}}</td>
+                        <td>{{billableEmployeesDetails.rateCard}}</td>
+                        <td>{{billableEmployeesDetails.stack}}</td>
+                        <td>{{billableEmployeesDetails.yearOfExperience}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-xl" role="document ">
+                    <div class="modal-content">
+                        <div class="modal-header ">
+                            <label for="title " style="font-size:25px;font-weight: bold;margin-top: 15px;">Package Details</label>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                        </div>
+                        <div class="modal-body ">
+                            <form action="" method="post" #form="ngForm">
+                                <div class="form-row mt-3">
+                                    <div class="form-group col-md-6 ty-font user-input-wrp"><br />
+                                        <input type="text" class="form-control  inputText " id="clientName" name="clientName" #clientName="ngModel" ngModel required [(ngModel)]='billableEmployees.clientName' readonly>
+                                        <span class="floating-label">Clientname</span>
+                                        <div *ngIf="clientName.invalid && (clientName.dirty || clientName.touched)" class="ty-errmsg ">
+                                            <div *ngIf="clientName.errors.required"> Client Name is required * </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-6 ty-font left user-input-wrp"><br />
+                                        <input type="text" class="form-control  inputText " id="EmpName" name="EmpName" #EmpName="ngModel" ngModel required [(ngModel)]='billableEmployees.EmpName' readonly>
+                                        <span class="floating-label">Employeename</span>
+                                        <div *ngIf="EmpName.invalid && (EmpName.dirty || EmpName.touched)" class="ty-errmsg ">
+                                            <div *ngIf="EmpName.errors.required"> Employee name is required * </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row mt-3">
+                                    <div class="form-group col-md-6 ty-font user-input-wrp"><br />
+                                        <input type="date" class="form-control  inputText " id="dateOfPaymemtByClient" name="dateOfPaymemtByClient" #dateOfPaymemtByClient="ngModel" ngModel required onfocus="this.type='date' " placeholder="Date of payment by client" onblur="this.type='text'">
+                                        <div *ngIf="dateOfPaymemtByClient.invalid && (dateOfPaymemtByClient.dirty || dateOfPaymemtByClient.touched)" class="ty-errmsg ">
+                                            <div *ngIf="dateOfPaymemtByClient.errors.required"> Date of payment by client is required * </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-6 ty-font left user-input-wrp"><br />
+                                        <input type="date" class="form-control  inputText " id="dateOfPaymemtByTyss" name="dateOfPaymemtByTyss" #dateOfPaymemtByTyss="ngModel" ngModel required onfocus="this.type='date' " placeholder="Date of payment by Tyss" onblur="this.type='text'">
+                                        <div *ngIf="dateOfPaymemtByTyss.invalid && (dateOfPaymemtByTyss.dirty || dateOfPaymemtByTyss.touched)" class="ty-errmsg ">
+                                            <div *ngIf="dateOfPaymemtByTyss.errors.required"> Date of payment by Tyss is required * </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row mt-3">
+                                    <div class="form-group col-md-6 ty-font user-input-wrp"><br/>
+                                        <input type="number" class="form-control  inputText" id="rateCardByClient" name="rateCardByClient" #rateCardByClient="ngModel" ngModel required>
+                                        <span class="floating-label">Ratecard By Client</span>
+                                        <div *ngIf="rateCardByClient.invalid && (rateCardByClient.dirty || rateCardByClient.touched)" class="ty-errmsg ">
+                                            <div *ngIf="rateCardByClient.errors.required">RateCard by Client is required * </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-6 ty-font left user-input-wrp"><br />
+                                        <input type="number" class="form-control  inputText" id="rateCardByTyss" name="rateCardByTyss" #rateCardByTyss="ngModel" ngModel required [(ngModel)]='billableEmployees.rateCardByTyss' readonly>
+                                        <span class="floating-label">Ratecard By Tyss</span>
+                                        <div *ngIf="rateCardByTyss.invalid && (rateCardByTyss.dirty || rateCardByTyss.touched)" class="ty-errmsg ">
+                                            <div *ngIf="rateCardByTyss.errors.required"> RateCard by Tyss is required * </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="float-right ty-create-button">
+                                    <button type="submit" class="btn btn-outline-primary ty-font" [disabled]='form.invalid' data-dismiss="modal" (click)="postBillableEmployeesPackageDetails(form)">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class=" mt-4 mb-4 " id="ty-pagination">
+        <jw-pagination [items]="billableEmployeesDetails " (changePage)="onChangePage($event) "></jw-pagination>
+    </div>
+</body>
+
+</html>

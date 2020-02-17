@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="https://ThanushreeCU.github.io/TY_TechElevate_TrainingMaintenance_Thanushree/ty-styles-form.css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body style="height: 1100px;">
+    <label for="title" class="ty-font heading">Create Employees </label><br>
+
+    <div class="card card-body  col-md-6 offset-3 mt-5">
+        <div class=" card-body  col-md-12">
+            <form action="" method="post" #form="ngForm" autocomplete="off" (ngSubmit)="postEmployeesDetails(form)">
+                <div class="form-row mt-3">
+                    <div class="form-group col-md-6 ty-font user-input-wrp"><br />
+                        <input type="text" class="form-control  inputText " id="empName" name="empName" #empName="ngModel" ngModel required>
+                        <span class="floating-label">Employee Name</span>
+                        <div *ngIf="empName.invalid && (empName.dirty || empName.touched)" class="ty-errmsg ">
+                            <div *ngIf="empName.errors.required"> Employee Name is required * </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6 ty-font left user-input-wrp"><br />
+                        <input type="text" class="form-control  inputText " id="empID" name="empID" #empID="ngModel" ngModel required>
+                        <span class="floating-label">Employee ID</span>
+                        <div *ngIf="empID.invalid && (empID.dirty || empID.touched)" class="ty-errmsg ">
+                            <div *ngIf="empID.errors.required"> Employee Id is required * </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row mt-3">
+                    <div class="form-group col-md-6 ty-font user-input-wrp"><br/>
+                        <select type="text" class="form-control inputText" id="technology" name="technology" #technology="ngModel" ngModel required>
+                            <option value='' selected>Choose Technology</option>
+                            <option class="non">javafullstack</option>
+                            <option class="non" >meanstack</option>
+                            <option class="non" >datascience</option>
+                            <option class="non" >mernstack</option>
+                            <option class="non" >python</option>
+                            <option class="non" >dotnet</option>
+                          </select>
+                        <div *ngIf="technology.invalid && (technology.dirty || technology.touched)" class="ty-errmsg ">
+                            <div *ngIf="technology.errors.required">Technology is required * </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6 ty-font left user-input-wrp"><br />
+                        <select type="text" class="form-control inputText" id="unit" name="unit" #unit="ngModel" ngModel required>
+                            <option value='' selected>Choose Unit</option>
+                            <option class="non">Development</option>
+                            <option class="non" >Testing</option>
+                            <option class="non" >Training</option>
+                          </select>
+                        <div *ngIf="unit.invalid && (unit.dirty || unit.touched)" class="ty-errmsg ">
+                            <div *ngIf="unit.errors.required"> Unit is required * </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row mt-3">
+                    <div class="form-group col-md-6 ty-font user-input-wrp"><br />
+                        <input type="number" class="form-control  inputText" id="yearOfExperience" name="yearOfExperience" #yearOfExperience="ngModel" ngModel required>
+                        <span class="floating-label">Year of experience</span>
+                        <div *ngIf="yearOfExperience.invalid && (yearOfExperience.dirty || yearOfExperience.touched)" class="ty-errmsg ">
+                            <div *ngIf="yearOfExperience.errors.required"> Year of experience is required * </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6 ty-font left user-input-wrp"><br />
+                        <input type="text" class="form-control  inputText" id="location" name="location" #location="ngModel" ngModel required>
+                        <span class="floating-label">Location</span>
+                        <div *ngIf="location.invalid && (location.dirty || location.touched)" class="ty-errmsg ">
+                            <div *ngIf="location.errors.required"> Location is required * </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row mt-3">
+                    <div class="form-group col-md-6 ty-font user-input-wrp"><br />
+                        <select type="text" class="form-control inputText" id="status" name="status" #status="ngModel" ngModel required>
+                            <option value='' selected>Choose Payment Status</option>
+                            <option class="non">Paid</option>
+                            <option class="non" >Un Paid</option>
+                          </select>
+                        <div *ngIf="status.invalid && (status.dirty || status.touched)" class="ty-errmsg ">
+                            <div *ngIf="status.errors.required"> Payment status is required * </div>
+                        </div>
+                    </div>
+                    <!-- <div class="form-group col-md-6 ty-font left user-input-wrp"><br />
+                        <input type="text" class="form-control  inputText" id="location" name="location" #location="ngModel" ngModel required>
+                        <span class="floating-label">Location</span>
+                        <div *ngIf="location.invalid && (location.dirty || location.touched)" class="ty-errmsg ">
+                            <div *ngIf="location.errors.required"> Location is required * </div>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="float-right ty-create-button">
+                    <button type="submit" class="btn btn-outline-primary ty-font">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+#notification {
+    position: fixed;
+    top: 10px;
+    width: 100%;
+    z-index: 105;
+    text-align: center;
+    font-weight: normal;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    background-color: rgb(255, 81, 0);
+    padding: 5px;
+    border-radius: 10px;
+}
+
+#notification span.dismiss {
+    border: 2px solid #FFF;
+    padding: 0 5px;
+    cursor: pointer;
+    float: right;
+    margin-right: 10px;
+    border-radius: 10px;
+}
+
+#notification a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold
+}
+
+#imgId {
+    height: 80px;
+    width: 150px;
+}
+
+#imgId:hover+a {
+    display: block;
+}
+
+span #plus {
+    content: "\002B";
+}
+
+.ty-font1 {
+    position: relative;
+    top: 45px;
+    left: 490px;
+}
+
+.ty-font.heading {
+    position: relative;
+    top: 60px;
+    font-size: 28px;
+    font-weight: bolder;
+    left: 485px;
+}
+
+
+/* @media screen and (max-width: 600px) {
+    .form-group.col-md-6.ty-font.user-input-wrp,
+    .floating-label,
+    input[type=submit] {
+        width: 100%;
+        margin-top: 0;
+    }
+} */

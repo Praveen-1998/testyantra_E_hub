@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="https://ThanushreeCU.github.io/TY_TechElevate_TrainingMaintenance_Thanushree/ty-styles-form.css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body style="height: 1100px;">
+    <label for="title" class="ty-font heading">Billable Employees Details</label><br>
+
+    <div class="card card-body  col-md-6 offset-3 mt-5">
+        <div class=" card-body  col-md-12">
+            <form action="" method="post" #form="ngForm" autocomplete="off" (ngSubmit)="postBillableEmployeesDetails(form)">
+
+                <div class="form-row mt-3">
+                    <div class="form-group col-md-6 ty-font user-input-wrp"><br />
+                        <select class="form-control select2" type="text" class="form-control inputText" id="clientName" name="clientName" #clientName="ngModel" ngModel required>
+                            <option selected disabled value='' >Choose clientName</option>                          
+                            <option class="non" *ngFor="let client of clients">{{client.clientName}}</option>
+                         </select>
+                        <div *ngIf="clientName.invalid && (clientName.dirty || clientName.touched)" class="ty-errmsg ">
+                            <div *ngIf="clientName.errors.required"> Clientname is required * </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6 ty-font left user-input-wrp"><br />
+                        <select class="form-control select2" type="text" class="form-control inputText" id="EmpName" name="EmpName" #EmpName="ngModel" ngModel required (change)="selectchange($event)">
+                            <option selected disabled value='' >Choose Employee Name</option>                          
+                            <option class="non" *ngFor="let employee of empService.EmpDetails" [value]="employee.empName">{{employee.empName}}</option>
+                         </select>
+                        <div *ngIf="EmpName.invalid && (EmpName.dirty || EmpName.touched)" class="ty-errmsg ">
+                            <div *ngIf="EmpName.errors.required"> Employee Name is required * </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row mt-3">
+                    <div class="form-group col-md-6 ty-font user-input-wrp"><br />
+                        <input type="date" class="form-control  inputText " id="dateOfDeployment" name="dateOfDeployment" #dateOfDeployment="ngModel" ngModel required onfocus="this.type='date' " placeholder="Date of deployment" onblur="this.type='text'">
+                        <div *ngIf="dateOfDeployment.invalid && (dateOfDeployment.dirty || dateOfDeployment.touched)" class="ty-errmsg ">
+                            <div *ngIf="dateOfDeployment.errors.required"> Date of deployment is required * </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6 left ty-font user-input-wrp"><br />
+                        <input type="date" class="form-control  inputText " id="contractEndDate" name="contractEndDate" #contractEndDate="ngModel" ngModel required onfocus="this.type='date' " placeholder="Contract end date" onblur="this.type='text'">
+                        <div *ngIf="contractEndDate.invalid && (contractEndDate.dirty || contractEndDate.touched)" class="ty-errmsg ">
+                            <div *ngIf="contractEndDate.errors.required"> Contract end date is required * </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row mt-3" *ngIf="isNameSelected">
+                    <div class="form-group col-md-6 ty-font user-input-wrp" *ngFor="let year of EmployeeDetails"><br />
+                        <input type="number" class="form-control  inputText" id="yearOfExperience" name="yearOfExperience" #yearOfExperience="ngModel" ngModel required [(ngModel)]="year.yearOfExperience" readonly>
+                        <span class="floating-label">Year of experience</span>
+                        <div *ngIf="yearOfExperience.invalid && (yearOfExperience.dirty || yearOfExperience.touched)" class="ty-errmsg ">
+                            <div *ngIf="yearOfExperience.errors.required"> Year of experience is required * </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6 ty-font left user-input-wrp" *ngFor="let tech of EmployeeDetails"><br/>
+                        <input type="text" class="form-control  inputText" id="stack" name="stack" #stack="ngModel" ngModel required [(ngModel)]="tech.technology" readonly>
+                        <span class="floating-label">Stack</span>
+                        <div *ngIf="stack.invalid && (stack.dirty || stack.touched)" class="ty-errmsg ">
+                            <div *ngIf="stack.errors.required"> Stack is required * </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row mt-3">
+                    <div class="form-group col-md-6 ty-font user-input-wrp"><br/>
+                        <input type="number" class="form-control  inputText" id="rateCard" name="rateCard" #rateCard="ngModel" ngModel required>
+                        <span class="floating-label">Ratecard</span>
+                        <div *ngIf="rateCard.invalid && (rateCard.dirty || rateCard.touched)" class="ty-errmsg ">
+                            <div *ngIf="rateCard.errors.required">Ratecard is required * </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6 ty-font left user-input-wrp"><br />
+                        <input type="hidden" class="form-control  inputText" id="clientId" name="clientId" #clientId="ngModel" ngModel required>
+                        <div *ngIf="clientId.invalid && (clientId.dirty || clientId.touched)" class="ty-errmsg ">
+                            <div *ngIf="clientId.errors.required"> ClientId is required * </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="float-right ty-create-button">
+                    <button type="submit" class="btn btn-outline-primary ty-font">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

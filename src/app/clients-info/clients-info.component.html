@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="https://ThanushreeCU.github.io/TY_TechElevate_TrainingMaintenance_Thanushree/ty-styles-table.css">
+    <link rel="stylesheet" type="text/css" href="https://ThanushreeCU.github.io/TY_TechElevate_TrainingMaintenance_Thanushree/ty-styles-form.css">
+</head>
+
+<body>
+    <div class="container col-md-10 offset-1">
+        <div class="mt-4">
+            <h3 class="ty-heading">Client Details</h3>
+            <table class="table table-hover table-bordered">
+                <thead class="text-white ty-header">
+                    <tr>
+                        <td>Client Name</td>
+                        <td>Client ShortName</td>
+                        <td>Department</td>
+                        <td>Email</td>
+                        <td>Phone</td>
+                        <td>Client Website</td>
+                        <td>City</td>
+                        <td>Street Address</td>
+                        <td>State</td>
+                        <td>Zip code</td>
+                        <td>Country</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let clientsDetails of ClientsDetails" (click)='particularRow(clientsDetails)' data-toggle="modal" data-target=".bd-example-modal-xl">
+                        <td>{{clientsDetails.clientName}}</td>
+                        <td>{{clientsDetails.clientShortName}}</td>
+                        <td>{{clientsDetails.department}}</td>
+                        <td>{{clientsDetails.email}}</td>
+                        <td>{{clientsDetails.phone}}</td>
+                        <td>{{clientsDetails.companyWebsite}}</td>
+                        <td>{{clientsDetails.city}}</td>
+                        <td>{{clientsDetails.streetAddress}}</td>
+                        <td>{{clientsDetails.state}}</td>
+                        <td>{{clientsDetails.zipCode}}</td>
+                        <td>{{clientsDetails.country}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-xl" role="document ">
+                    <div class="modal-content">
+                        <div class="modal-header ">
+                            <label for="title " class="ty-font " style="font-size:25px;font-weight: bold;margin-top: 15px; ">Update Client Details</label>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                        </div>
+                        <div class="modal-body ">
+                            <form action=" " method="post" #form="ngForm">
+                                <input type="hidden" name="_id" #_id='ngModel' [(ngModel)]="clientDetails._id" ngModel>
+                                <div class="form-row mt-3 ">
+                                    <div class="form-group col-md-6 ty-font user-input-wrp "> <br />
+                                        <input type="text " class="form-control inputText " id="clientName " name="clientName" #clientName="ngModel" [(ngModel)]="clientDetails.clientName " ngModel>
+                                        <span class="floating-label ">Client Name</span>
+                                    </div>
+                                    <div class="form-group col-md-6 ty-font user-input-wrp "> <br />
+                                        <input type="text " class="form-control inputText " id="clientShortName" name="clientShortName" #clientShortName="ngModel" ngModel [(ngModel)]="clientDetails.clientShortName ">
+                                        <span class="floating-label ">Client Short Name</span>
+                                    </div>
+                                </div>
+                                <div class="form-row mt-3 ">
+                                    <div class="form-group col-md-6 ty-font user-input-wrp "> <br />
+                                        <select class="form-control inputText" id="department" name="department" #department='ngModel' ngModel [(ngModel)]="clientDetails.department ">
+                            <span class="floating-label ">Department</span>
+                
+                            <option value=" " selected>Department</option>
+                            <option>Development</option>
+                            <option>Testing</option>
+                            <option>Datascience</option>
+                            <option>Others</option>
+                          </select>
+                                    </div>
+                                    <div class="form-group col-md-6 ty-font user-input-wrp "> <br />
+                                        <input type="text" class="form-control inputText " id="email" name="email" #email="ngModel" ngModel [(ngModel)]="clientDetails.email">
+                                        <span class="floating-label ">Email</span>
+                                    </div>
+                                </div>
+                                <div class="form-row mt-3 ">
+                                    <div class="form-group col-md-6 ty-font user-input-wrp "> <br />
+                                        <input type="number" class="form-control inputText" id="phone" name="phone" #phone="ngModel" ngModel [(ngModel)]="clientDetails.phone ">
+                                        <span class="floating-label ">Phone no</span>
+                                    </div>
+                                    <div class="form-group col-md-6 ty-font user-input-wrp "> <br />
+
+                                        <input type="text" class="form-control inputText" id="companyWebsite" name="companyWebsite" #companyWebsite="ngModel" ngModel [(ngModel)]="clientDetails.companyWebsite">
+                                        <span class="floating-label ">Company Website</span>
+                                    </div>
+                                </div>
+                                <label for="title " class="ty-font " style="font-size:25px;font-weight: bold;margin-top: 15px; ">Client Address</label>
+                                <div class="form-row mt-3 ">
+                                    <div class="form-group col-md-6 ty-font user-input-wrp "> <br />
+                                        <input type="text" class="form-control inputText " id="city" name="city" #city="ngModel" ngModel [(ngModel)]="clientDetails.city">
+                                        <span class="floating-label ">City</span>
+                                    </div>
+                                    <div class="form-group col-md-6 ty-font user-input-wrp "> <br />
+                                        <input type="text" class="form-control inputText" id="streetAddress" name="streetAddress" #streetAddress="ngModel" ngModel [(ngModel)]="clientDetails.streetAddress">
+                                        <span class="floating-label ">Street Address</span>
+                                    </div>
+                                </div>
+                                <div class="form-row mt-3 ">
+                                    <div class="form-group col-md-6 ty-font user-input-wrp "> <br />
+                                        <input type="text" class="form-control inputText " id="state " name="state" #state="ngModel" ngModel [(ngModel)]="clientDetails.state">
+                                        <span class="floating-label ">State/Region/Province</span>
+                                    </div>
+                                    <div class="form-group col-md-6 ty-font user-input-wrp "> <br />
+                                        <input type="text" class="form-control inputText" id="zipCode" name="zipCode" #zipCode="ngModel" ngModel [(ngModel)]="clientDetails.zipCode ">
+                                        <span class="floating-label ">Zip Code</span>
+                                    </div>
+                                </div>
+                                <div class="form-row mt-3 ">
+                                    <div class="form-group col-md-6 ty-font user-input-wrp "> <br />
+                                        <input type="text" class="form-control inputText" id="country" name="country" #country="ngModel" ngModel [(ngModel)]="clientDetails.country">
+                                        <span class="floating-label ">Country</span>
+                                    </div>
+                                </div>
+                                <div class="float-right ty-create-button ">
+                                    <button type="submit" id="closemodal" class=" btn btn-outline-primary ty-font" data-dismiss="modal" (click)="updateClients(form)">Update</button>
+                                </div>
+                                <div class="float-right ty-reset-button">
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Delete</button>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-body">
+                                                    <small>Are you sure you want to delete this clientsdetails?</small>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="submit" class="btn btn-outline-danger ty-font delete rounded border  border-info" data-dismiss="modal" (click)="deleteClients(form)">Delete</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class=" mt-4 mb-4 " id="ty-pagination">
+        <jw-pagination [items]="ClientsDetails " (changePage)="onChangePage($event) "></jw-pagination>
+    </div>
+    <div id="notification" style="display: none;" class="col-md-2  offset-4">
+        <span class="dismiss"><a title="dismiss this notification">x</a></span>
+    </div>
+</body>
+
+</html>

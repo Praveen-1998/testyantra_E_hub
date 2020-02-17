@@ -1,0 +1,15 @@
+<a routerLink="/home"> <button type="button" class="btn btn-outline-info">Back</button></a>
+<div class="row offset-3 mt-5">
+    <div *ngFor="let image of images">
+        <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">
+            <img id="imgId" src="http://localhost:4000/static/assets/uploads/{{ image.image }}" class="rounded border  border-info ml-4" style="border-radius: 20px;" (click)="sendClientName(image.clientName, image.clientId, image.clientName)"><br></a>
+
+        <div *ngFor="let count of BillableEmpCountwrtClient">
+            <div *ngIf="image.clientId===count._id.clientId">
+                <a routerLink="/billableTable">
+                    <h3 style="text-align: center;" (click)="sendClientId(count._id.clientId)">{{count.count}}</h3>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

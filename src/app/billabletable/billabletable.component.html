@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="https://ThanushreeCU.github.io/TY_TechElevate_TrainingMaintenance_Thanushree/ty-styles-table.css">
+    <link rel="stylesheet" type="text/css" href="https://ThanushreeCU.github.io/TY_TechElevate_TrainingMaintenance_Thanushree/ty-styles-form.css">
+</head>
+
+<body>
+
+    <body>
+        <a routerLink="/clientsLogo"> <button type="button" class="btn btn-outline-info">Back</button></a>
+        <button type="button" class="float-right ty-download"><i class="fa fa-download" aria-hidden="true"></i></button>
+        <button type="submit" class="float-right ty-print"><i class="fas fa-print"></i></button>
+        <div class="container">
+            <div class="col-md-11  mt-4">
+                <h3 class="ty-heading">Technologywise Billable Employees Details</h3>
+                <table class="table table-hover table-bordered">
+                    <thead class="text-white ty-header">
+                        <tr>
+                            <td>ClientName</td>
+                            <td>EmployeeName</td>
+                            <td>DateOfDeployment</td>
+                            <td>ContractEndDate</td>
+                            <td>Ratecard</td>
+                            <td>Stack</td>
+                            <td>Experience</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let data of showimageservice.billableEmpList">
+                            <td>{{data.clientName}}</td>
+                            <td>{{data.EmpName}}</td>
+                            <td>{{data.dateOfDeployment | date: 'dd/MM/yyyy'}}</td>
+                            <td>{{data.contractEndDate | date: 'dd/MM/yyyy'}}</td>
+                            <td>{{data.rateCard}}</td>
+                            <td>{{data.stack}}</td>
+                            <td>{{data.yearOfExperience}}</td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class=" mt-4 mb-4" id="ty-pagination">
+            <jw-pagination [items]="showimageservice.billableEmpList" (changePage)="onChangePage($event)"></jw-pagination>
+        </div>
+    </body>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h4 for="title" class="ty-font heading" style="font-family: cursive; margin-left: 20%; margin-top: 20px;">Profit per year</h4><br>
+
+    <div class="row mt-5">
+        <div class="col-md-5 mt-3">
+            <div id="chartdiv1" style="width: 90%; height: 400px;margin-left: 10%;">
+            </div>
+        </div>
+        <div class="col-md-5 mt-2" style="margin-left: 10%;">
+
+            <fusioncharts width="550" height="400" type="AngularGauge" [dataSource]="dataSource">
+            </fusioncharts>
+        </div>
+    </div>
+</body>
+
+</html>

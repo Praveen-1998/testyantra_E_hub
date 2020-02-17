@@ -1,0 +1,17 @@
+span #plus {
+    content: "\002B";
+}
+
+.ty-font1 {
+    position: relative;
+    top: 45px;
+    left: 490px;
+}
+
+.ty-font.heading {
+    position: relative;
+    top: 60px;
+    font-size: 28px;
+    font-weight: bolder;
+    left: 485px;
+}

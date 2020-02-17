@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Non_Billable_Employee_Details</title>
+    <link rel="stylesheet" type="text/css" href="https://ThanushreeCU.github.io/TY_TechElevate_TrainingMaintenance_Thanushree/ty-styles-table.css">
+    <link rel="stylesheet" type="text/css" href="https://ThanushreeCU.github.io/TY_TechElevate_TrainingMaintenance_Thanushree/ty-styles-form.css">
+</head>
+
+<body>
+    <a routerLink="/nonBillable"> <button type="button" class="btn btn-outline-info">Back</button></a>
+    <div class="container col-md-10 offset-1">
+        <div class="mt-4">
+            <h3 class="ty-heading">Non Billable Employees Details</h3>
+            <table class="table table-hover table-bordered">
+                <thead class="text-white ty-header">
+                    <tr>
+                        <td>EmployeeName</td>
+                        <td>Technology</td>
+                        <td>Unit</td>
+                        <td>Experience</td>
+                        <td>Location</td>
+                        <td>Status</td>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr *ngFor="let nonBillableEmployeesDetails of empService.paidEmployeesWrtStack">
+                        <td>{{nonBillableEmployeesDetails.empName}}</td>
+                        <td>{{nonBillableEmployeesDetails.technology}}</td>
+                        <td>{{nonBillableEmployeesDetails.unit}}</td>
+                        <td>{{nonBillableEmployeesDetails.yearOfExperience}}</td>
+                        <td>{{nonBillableEmployeesDetails.status}}</td>
+                        <td>{{nonBillableEmployeesDetails.location}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class=" mt-4 mb-4 " id="ty-pagination">
+        <jw-pagination [items]="empDetailsBasedOnStackAndStatus " (changePage)="onChangePage($event) "></jw-pagination>
+    </div>
+</body>
+
+</html>

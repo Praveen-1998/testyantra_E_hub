@@ -1,0 +1,25 @@
+#imgId {
+    height: 100px;
+    width: 250px;
+}
+
+#imgId:hover+a {
+    display: block;
+}
+
+.main-overview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
+    /* Where the magic happens */
+    grid-auto-rows: 94px;
+    grid-gap: 80px;
+    margin: 80px;
+}
+
+.overviewcard {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 60px;
+    background-color: rgba(180, 120, 8, 0.719);
+}

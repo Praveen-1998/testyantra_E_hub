@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="https://ThanushreeCU.github.io/TY_TechElevate_TrainingMaintenance_Thanushree/ty-styles-table.css">
+    <link rel="stylesheet" type="text/css" href="https://ThanushreeCU.github.io/TY_TechElevate_TrainingMaintenance_Thanushree/ty-styles-form.css">
+</head>
+
+<body>
+    <a routerLink="/BillableEmployees"> <button type="button" class="btn btn-outline-info">Back</button></a>
+    <div class="container col-md-10 offset-1">
+        <div class="mt-4">
+            <h3 class="ty-heading"> Billable Employees Details</h3>
+            <table class="table table-hover table-bordered">
+                <thead class="text-white ty-header">
+                    <tr>
+                        <td>ClientName</td>
+                        <td>EmployeeName</td>
+                        <td>DateOfDeployment</td>
+                        <td>ContractEndDate</td>
+                        <td>Ratecard</td>
+                        <td>Stack</td>
+                        <td>Experience</td>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr *ngFor="let billableEmployeesDetails of showImagService.billableEmpListWrtStack">
+                        <td>{{billableEmployeesDetails.clientName}}</td>
+                        <td>{{billableEmployeesDetails.EmpName}}</td>
+                        <td>{{billableEmployeesDetails.dateOfDeployment | date: 'dd/MM/yyyy'}}</td>
+                        <td>{{billableEmployeesDetails.contractEndDate | date: 'dd/MM/yyyy'}}</td>
+                        <td>{{billableEmployeesDetails.rateCard}}</td>
+                        <td>{{billableEmployeesDetails.stack}}</td>
+                        <td>{{billableEmployeesDetails.yearOfExperience}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class=" mt-4 mb-4 " id="ty-pagination">
+        <jw-pagination [items]="showImagService.billableEmpListWrtStack " (changePage)="onChangePage($event) "></jw-pagination>
+    </div>
+</body>
+
+</html>

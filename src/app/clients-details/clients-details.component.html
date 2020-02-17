@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="https://ThanushreeCU.github.io/TY_TechElevate_TrainingMaintenance_Thanushree/ty-styles-form.css">
+</head>
+
+<body style="height: 1100px;">
+    <label for="title" class="ty-font heading">Client Details</label><br>
+
+    <div class="card card-body  col-md-6 offset-3 mt-5">
+        <div class=" card-body  col-md-12">
+            <form action="" method="post" #form="ngForm" (ngSubmit)="postClientDetails(form)">
+                <div class="form-row mt-3">
+                    <div class="form-group col-md-6 ty-font user-input-wrp"> <br/>
+                        <input type="text" class="form-control  inputText" id="clientName" name="clientName" #clientName="ngModel" ngModel required>
+                        <span class="floating-label">Client Name</span>
+                        <div *ngIf="clientName.invalid && (clientName.dirty || clientName.touched)" class="ty-errmsg ">
+                            <div *ngIf="clientName.errors.required"> Client Name is required * </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6 ty-font left user-input-wrp"><br />
+                        <input type="text" class="form-control  inputText" id="clientShortName" name="clientShortName" #clientShortName="ngModel" ngModel required multiple>
+                        <span class="floating-label">Client Short Name</span>
+                        <div *ngIf="clientShortName.invalid && (clientShortName.dirty || clientShortName.touched)" class="ty-errmsg ">
+                            <div *ngIf="clientShortName.errors.required"> Client Short Name is required * </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="form-row mt-3">
+
+                    <div class="form-group col-md-6 ty-font user-input-wrp"><br />
+                        <select type="text" class="form-control inputText" id="department" name="department" #department="ngModel" ngModel required>
+                              <!-- <option selected disabled >Choose Department</option> -->
+                              <option class="non">Development</option>
+                              <option  value="" selected>Choose Department</option>
+                              <option class="non" >Testing</option>
+                              <option class="editable" value="other">Other</option>
+                            </select>
+                        <div *ngIf="department.invalid && (department.dirty || department.touched)" class="ty-errmsg ">
+                            <div *ngIf="department.errors.required"> Department is required * </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6 ty-font left user-input-wrp"><br />
+                        <input type="text" class="form-control  inputText" id="email" name="email" #email="ngModel" ngModel required>
+                        <span class="floating-label">Email</span>
+                        <div *ngIf="email.invalid && (email.dirty || email.touched)" class="ty-errmsg ">
+                            <div *ngIf="email.errors.required"> Email is required * </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-row mt-3">
+
+                    <div class="form-group col-md-6 ty-font user-input-wrp"><br />
+                        <input type="text" class="form-control  inputText" id="phone" name="phone" #phone="ngModel" ngModel required>
+                        <span class="floating-label">Phone</span>
+                        <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="ty-errmsg ">
+                            <div *ngIf="phone.errors.required"> Phone Number is required * </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6 ty-font left user-input-wrp"><br />
+                        <input type="text" class="form-control  inputText" id="companyWebsite" name="companyWebsite" #companyWebsite="ngModel" ngModel required>
+                        <span class="floating-label">Company Website</span>
+                        <div *ngIf="companyWebsite.invalid && (companyWebsite.dirty || companyWebsite.touched)" class="ty-errmsg ">
+                            <div *ngIf="companyWebsite.errors.required">Company Website is required * </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="drop-container mt-5" ngFileDrop [options]="options" (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput" [ngClass]="{ 'is-drop-over': dragOver }">
+                </div>
+                <label class="upload-button">
+          <input type="file" ngFileSelect [options]="options" (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput" multiple>
+           
+        </label>
+                <button type="button" class="btn btn-info" (click)="startUpload()">
+          Upload 
+        </button><span>(Please upload an image first then click on submit)<span style="color: red;">*</span></span><br>
+
+                <label for="title" style="font-size:25px;font-weight: bold;margin-top: 45px;">Client Address</label><br>
+
+                <div class="form-row mt-3">
+
+                    <div class="form-group col-md-6 ty-font user-input-wrp"><br />
+                        <input type="text" class="form-control  inputText" id="city" name="city" #city="ngModel" ngModel required>
+                        <span class="floating-label">Street Address</span>
+                        <div *ngIf="city.invalid && (city.dirty || city.touched)" class="ty-errmsg ">
+                            <div *ngIf="city.errors.required">Street Address is required * </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6 ty-font left  user-input-wrp"><br />
+                        <input type="text" class="form-control  inputText" id="streetAddress" name="streetAddress" #streetAddress="ngModel" ngModel required>
+                        <span class="floating-label">City </span>
+                        <div *ngIf="streetAddress.invalid && (streetAddress.dirty || streetAddress.touched)" class="ty-errmsg ">
+                            <div *ngIf="streetAddress.errors.required">City is required * </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-row mt-3">
+
+                    <div class="form-group col-md-6 ty-font user-input-wrp"><br />
+                        <input type="text" class="form-control  inputText" id="state" name="state" #state="ngModel" ngModel required>
+                        <span class="floating-label">State</span>
+                        <div *ngIf="state.invalid && (state.dirty || state.touched)" class="ty-errmsg ">
+                            <div *ngIf="state.errors.required">State is required * </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6 ty-font left  user-input-wrp"><br />
+                        <input type="text" class="form-control  inputText" id="zipCode" name="zipCode" #zipCode="ngModel" ngModel required>
+                        <span class="floating-label">Zip Code </span>
+                        <div *ngIf="zipCode.invalid && (zipCode.dirty || zipCode.touched)" class="ty-errmsg ">
+                            <div *ngIf="zipCode.errors.required">Zipcode is required * </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-row mt-3">
+
+                    <div class="form-group col-md-6 ty-font user-input-wrp"><br />
+                        <select type="text" class="form-control inputText" id="country" name="country" #country="ngModel" ngModel required>                         
+                          <option value="" selected>Country</option>
+                          <option>India</option>
+                          <option>Afghanistan</option>
+                          <option>Akrotiri</option>
+                          <option>Albania</option>
+                          <option>Algeria</option>
+                          <option>American Samoa</option>
+                          <option>Andorra</option>
+                          <option>Angola</option>
+                          <option>Anguilla</option>
+                          <option>Antarctica</option>
+              </select>
+                        <div *ngIf="country.invalid && (country.dirty || country.touched)" class="ty-errmsg ">
+                            <div *ngIf="country.errors.required">Country is required * </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="float-right ty-create-button">
+                    <button type="submit" class="btn btn-outline-primary ty-font" [disabled]='form.invalid'>Submit</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</body>
+
+</html>
